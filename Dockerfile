@@ -6,7 +6,7 @@ ENV WINEDEBUG=-all,err+all \
 COPY bin/* /usr/bin/
 
 RUN apt-get update \
-    && apt-get install -y git curl wget unzip procps xvfb openjdk-8-jre-headless osslsigncode \
+    && apt-get install -y git curl wget unzip procps xvfb openjdk-8-jdk-headless osslsigncode \
     && dpkg --add-architecture i386 \
     && apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y -o APT::Immediate-Configure=false wine wine32 \
