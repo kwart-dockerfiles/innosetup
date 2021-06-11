@@ -6,13 +6,13 @@ ENV WINEDEBUG=-all,err+all \
 COPY bin/* /usr/bin/
 
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y git curl wget unzip procps xvfb openjdk-8-jdk-headless osslsigncode \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y git curl wget unzip procps xvfb openjdk-8-jdk-headless osslsigncode libreoffice-writer-nogui \
     && dpkg --add-architecture i386 \
     && apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y -o APT::Immediate-Configure=false wine wine32 \
     && echo "Downloading Windows JREs" \
     && set -e \
-    && wget -q -O /tmp/jre64.zip "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.8%2B10/OpenJDK11U-jre_x64_windows_hotspot_11.0.8_10.zip" \
+    && wget -q -O /tmp/jre64.zip "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.11%2B9/OpenJDK11U-jre_x64_windows_hotspot_11.0.11_9.zip" \
     && unzip -d /opt /tmp/jre64.zip \
     && mv /opt/jdk* /opt/jre64 \
     && rm /tmp/jre64.zip \
@@ -31,4 +31,4 @@ RUN apt-get update \
     && echo "Installing Inno Setup binaries" \
     && wget -q -O is.exe "http://files.jrsoftware.org/is/6/innosetup-6.0.5.exe" \
     && wine-x11-run wine is.exe /SP- /VERYSILENT /ALLUSERS /SUPPRESSMSGBOXES \
-    && rm -rf is.exe /tmp/commons-daemon.zip /var/lib/apt/lists/*
+    && rm -rf is.exe /var/lib/apt/lists/*
