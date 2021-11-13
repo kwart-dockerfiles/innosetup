@@ -29,7 +29,7 @@ RUN apt-get update \
     && mv /opt/apache-ant* /opt/ant \
     && ln -s /opt/ant/bin/ant /usr/bin/ant \
     && echo "Installing Apache Maven" \
-    && curl -s -SL https://downloads.apache.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz | tar xzf - -C /opt \
+    && curl -s -SL https://archive.apache.org/dist/maven/maven-3/3.8.3/binaries/apache-maven-3.8.3-bin.tar.gz | tar xzf - -C /opt \
     && mv /opt/apache-maven* /opt/maven \
     && ln -s /opt/maven/bin/mvn /usr/bin/mvn \
     && echo "Installing Inno Setup binaries" \
