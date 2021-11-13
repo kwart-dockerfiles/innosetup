@@ -25,7 +25,7 @@ RUN apt-get update \
     && curl -s -SL https://sourceforge.net/projects/launch4j/files/launch4j-3/3.14/launch4j-3.14-linux-x64.tgz | tar xzf - -C /opt \
     && echo alias launch4j=/opt/launch4j/launch4j >> /root/.bashrc \
     && echo "Installing Apache Ant" \
-    && curl -s -SL https://downloads.apache.org/ant/binaries/apache-ant-1.10.9-bin.tar.gz | tar xzf - -C /opt \
+    && curl -s -SL https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.12-bin.tar.gz | tar xzf - -C /opt \
     && mv /opt/apache-ant* /opt/ant \
     && ln -s /opt/ant/bin/ant /usr/bin/ant \
     && echo "Installing Apache Maven" \
