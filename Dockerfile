@@ -12,10 +12,14 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y -o APT::Immediate-Configure=false wine wine32 \
     && echo "Downloading Windows JREs" \
     && set -e \
-    && wget -q -O /tmp/jre64.zip "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.11%2B9/OpenJDK11U-jre_x64_windows_hotspot_11.0.11_9.zip" \
+    && wget -q -O /tmp/jre64.zip "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_x64_windows_hotspot_11.0.13_8.zip" \
     && unzip -d /opt /tmp/jre64.zip \
     && mv /opt/jdk* /opt/jre64 \
     && rm /tmp/jre64.zip \
+    && wget -q -O /tmp/jre32.zip "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_x86-32_windows_hotspot_11.0.13_8.zip" \
+    && unzip -d /opt /tmp/jre32.zip \
+    && mv /opt/jdk* /opt/jre32 \
+    && rm /tmp/jre32.zip \
     && set +e \
     && echo "Installing Launch4j" \
     && curl -s -SL https://sourceforge.net/projects/launch4j/files/launch4j-3/3.14/launch4j-3.14-linux-x64.tgz | tar xzf - -C /opt \
@@ -29,7 +33,7 @@ RUN apt-get update \
     && mv /opt/apache-maven* /opt/maven \
     && ln -s /opt/maven/bin/mvn /usr/bin/mvn \
     && echo "Installing Inno Setup binaries" \
-    && wget -q -O is.exe "http://files.jrsoftware.org/is/6/innosetup-6.0.5.exe" \
+    && wget -q -O is.exe "http://files.jrsoftware.org/is/6/innosetup-6.2.0.exe" \
     && wine-x11-run wine is.exe /SP- /VERYSILENT /ALLUSERS /SUPPRESSMSGBOXES \
     && chmod -R a+rX /root \
     && rm -rf is.exe /var/lib/apt/lists/*
