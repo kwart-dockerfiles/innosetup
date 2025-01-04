@@ -12,11 +12,11 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y -o APT::Immediate-Configure=false wine wine32 \
     && echo "Downloading Windows JREs" \
     && set -e \
-    && wget -q -O /tmp/jre64.zip "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20%2B8/OpenJDK11U-jre_x64_windows_hotspot_11.0.20_8.zip" \
+    && wget -q -O /tmp/jre64.zip "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.13%2B11/OpenJDK17U-jre_x64_windows_hotspot_17.0.13_11.zip" \
     && unzip -d /opt /tmp/jre64.zip \
     && mv /opt/jdk* /opt/jre64 \
     && rm /tmp/jre64.zip \
-    && wget -q -O /tmp/jre32.zip "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20%2B8/OpenJDK11U-jre_x86-32_windows_hotspot_11.0.20_8.zip" \
+    && wget -q -O /tmp/jre32.zip "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.13%2B11/OpenJDK17U-jre_x86-32_windows_hotspot_17.0.13_11.zip" \
     && unzip -d /opt /tmp/jre32.zip \
     && mv /opt/jdk* /opt/jre32 \
     && rm /tmp/jre32.zip \
