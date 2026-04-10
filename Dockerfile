@@ -35,5 +35,5 @@ RUN apt-get update \
     && echo "Installing Inno Setup binaries" \
     && wget -q -O is.exe "https://github.com/jrsoftware/issrc/releases/download/is-6_7_1/innosetup-6.7.1.exe" \
     && wine-x11-run wine is.exe /SP- /VERYSILENT /ALLUSERS /SUPPRESSMSGBOXES \
-    && chmod -R a+rX /root \
+    && chmod -R a+rX /root /opt/jre32 /opt/jre64 \
     && rm -rf is.exe /var/lib/apt/lists/*
